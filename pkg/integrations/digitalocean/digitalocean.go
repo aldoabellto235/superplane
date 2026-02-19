@@ -75,9 +75,7 @@ func (d *DigitalOcean) Components() []core.Component {
 }
 
 func (d *DigitalOcean) Triggers() []core.Trigger {
-	return []core.Trigger{
-		&OnDropletEvent{},
-	}
+	return []core.Trigger{}
 }
 
 func (d *DigitalOcean) Sync(ctx core.SyncContext) error {
