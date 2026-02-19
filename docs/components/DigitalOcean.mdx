@@ -4,12 +4,6 @@ title: "DigitalOcean"
 
 Manage and monitor your DigitalOcean infrastructure
 
-## Triggers
-
-<CardGrid>
-  <LinkCard title="On Droplet Event" href="#on-droplet-event" description="Poll for DigitalOcean droplet lifecycle events" />
-</CardGrid>
-
 import { CardGrid, LinkCard } from "@astrojs/starlight/components";
 
 ## Actions
@@ -32,61 +26,6 @@ import { CardGrid, LinkCard } from "@astrojs/starlight/components";
 5. Copy the token and paste it below
 
 > **Note**: The token is only shown once. Store it securely if needed elsewhere.
-
-<a id="on-droplet-event"></a>
-
-## On Droplet Event
-
-The On Droplet Event trigger polls the DigitalOcean API for droplet lifecycle events.
-
-### Use Cases
-
-- **Infrastructure monitoring**: React to droplet creation and destruction events
-- **Audit logging**: Track all droplet lifecycle changes
-- **Automation**: Trigger workflows when droplets are powered on/off or resized
-
-### Configuration
-
-- **Events**: Select which droplet event types to listen for (create, destroy, power_on, power_off, shutdown, reboot, snapshot, rebuild, resize, rename)
-
-### Polling
-
-This trigger polls the DigitalOcean Actions API every 60 seconds for new completed droplet events matching the configured event types.
-
-### Event Data
-
-Each event includes:
-- **action**: The DigitalOcean action object with id, status, type, timestamps, resource_id, and region_slug
-
-### Example Data
-
-```json
-{
-  "action": {
-    "completed_at": "2026-01-19T12:01:30Z",
-    "id": 123456789,
-    "region_slug": "nyc3",
-    "resource_id": 98765432,
-    "resource_type": "droplet",
-    "started_at": "2026-01-19T12:00:00Z",
-    "status": "completed",
-    "type": "create"
-  },
-  "droplet": {
-    "id": 98765432,
-    "image": {
-      "name": "Ubuntu 24.04 (LTS) x64",
-      "slug": "ubuntu-24-04-x64"
-    },
-    "name": "my-droplet",
-    "region": {
-      "name": "New York 3",
-      "slug": "nyc3"
-    },
-    "size_slug": "s-1vcpu-1gb"
-  }
-}
-```
 
 <a id="create-droplet"></a>
 
